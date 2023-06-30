@@ -1,8 +1,12 @@
 import Button from "./Button";
 
-const Pad = () => {
+interface PadProps {
+  clickHandler: (buttonName: string) => void;
+}
+
+const Pad = ({ clickHandler }: PadProps) => {
   const handleClick = (buttonName: string) => {
-    console.log(buttonName);
+    clickHandler(buttonName);
   };
 
   return (
