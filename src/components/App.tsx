@@ -4,14 +4,28 @@ import Display from "./Display";
 
 function App() {
   const [input, setInput] = useState("0");
+  const [operation, setOperation] = useState("");
+  const [total, setTotal] = useState("0");
 
   const handleClick = (buttonName: string) => {
     validateNum(buttonName);
+    clearHistory(buttonName);
   };
 
   const validateNum = (buttonName: string) => {
-    console.log(buttonName);
-    isNaN(+buttonName) ? console.log("symbol") : console.log("number");
+    isNaN(+buttonName) ? console.log("symbol") : updateInput(buttonName);
+  };
+
+  const updateInput = (buttonName: string) => {
+    input === "0" ? setInput(buttonName) : setInput(input + buttonName);
+  };
+
+  const clearHistory = (buttonName: string) => {
+    if (buttonName === "AC") {
+      setInput("0");
+      setOperation("");
+      setTotal("0");
+    }
   };
 
   return (
